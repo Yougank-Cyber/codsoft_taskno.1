@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App Signup</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="welcome" id="welcomePage">
+            <img src="https://i.pinimg.com/564x/69/84/3e/69843e99dbfc7b273f8508aa23cf4f60.jpg" alt="Welcome Image" class="welcome-image">
+            <h1>Welcome to Our App</h1>
+            <button onclick="showPage('signUp')">Sign Up</button>
+            <button onclick="showPage('logIn')">Login</button>
+        </div>
+        
+        <div id="signUpPage" class="hidden">
+            <img src="https://i.pinimg.com/564x/fc/b5/a7/fcb5a7575c4f5a8733194fad7428c3c4.jpg" alt="SignUpPage" class="Sign-Up-Page">
+            <h2>Sign Up</h2>
+            <p>Kindly fill out the details to Sign Up</p>
+            <form id="signUpForm">
+                <div class="form-group">
+                    <label for="signUpName">Name:</label>
+                    <input type="text" id="signUpName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signUpEmail">Email:</label>
+                    <input type="email" id="signUpEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signUpPassword">Password:</label>
+                    <input type="password" id="signUpPassword" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signUpLocation">Location:</label>
+                    <input type="text" id="signUpLocation" name="location">
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <div id="logInPage" class="hidden">
+            <img src="https://i.pinimg.com/564x/14/47/c3/1447c3dde903d7ac5681ca2e774a3411.jpg" alt="LogInPage" class="Log-In-Page">
+            <h2>Login Now</h2>
+            <p>Kindly fill out the details to Login</p>
+            <form id="logInForm">
+                <div class="form-group">
+                    <label for="logInEmail">Email:</label>
+                    <input type="email" id="logInEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="logInPassword">Password:</label>
+                    <input type="password" id="logInPassword" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <script>function showPage(page) {
+        document.querySelector('.welcome').classList.add('hidden');
+        document.getElementById(page + 'Page').classList.remove('hidden');
+    }
+    
+    document.getElementById('signUpForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        let name = document.getElementById('signUpName').value;
+        let email = document.getElementById('signUpEmail').value;
+        let password = document.getElementById('signUpPassword').value;
+        let location = document.getElementById('signUpLocation').value;
+    
+        if (name && email && password) {
+            alert(`Welcome, ${name}! Your account has been created successfully.`);
+            document.getElementById('signUpPage').classList.add('hidden');
+            document.querySelector('.welcome').classList.remove('hidden');
+        } else {
+            alert('Please fill in all required fields.');
+        }
+    });
+    
+    document.getElementById('logInForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        let email = document.getElementById('logInEmail').value;
+        let password = document.getElementById('logInPassword').value;
+    
+        if (email && password) {
+            alert(`Welcome back! You have successfully logged in.`);
+            // Here you would typically send the data to your server
+        } else {
+            alert('Please fill in all required fields.');
+        }
+    });
+    </script>
+</body>
+</html>
